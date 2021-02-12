@@ -1,0 +1,11 @@
+<div [formGroup]="regForm">
+  <!-- ngModelGroup="{{modelGroupName}}" -->
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+      <mat-form-field fxFlex="100" >
+          <mat-label i18n>Filiale</mat-label>
+          <mat-select formControlName="filialeId" required>
+            <mat-option *ngFor="let item of filiali" [value]="item.id">{{item.nomeFiliale}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+  </div>
+</div>

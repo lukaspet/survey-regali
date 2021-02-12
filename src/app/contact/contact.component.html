@@ -1,0 +1,54 @@
+<div [formGroup]="regForm">
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+    <mat-form-field  fxFlex="100">
+      <mat-label i18n>Regalo</mat-label>
+      <mat-select multiple formControlName="selectAtLeastOne" (selectionChange)="handleSelection($event.value)" required>
+          <mat-option value="ombrello" i18n>Ombrello con logo Zanutta</mat-option>
+          <mat-option value="giubbotto" i18n>Giubbotto smanicato con logo Zanutta/Mapei</mat-option>
+          <mat-option value="vino_zanutta" i18n>Bottiglia di vino personalizzata Zanutta</mat-option>
+          <mat-option value="vino_magnum" i18n>Bottiglia di vino (Magnum) personalizzata Zanutta</mat-option>
+          <mat-option value="branzino" i18n>Branzino</mat-option>
+          <mat-option value="altro" i18n>Altro</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" *ngIf="selectedItems.includes('ombrello')" fxLayoutGap="0px">
+    <mat-form-field fxFlex="100">
+        <mat-label>Quanti ombrelli vorresti?</mat-label>
+        <input matInput formControlName="ombrello" type="number" placeholder="Inserisci un numero" required>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" *ngIf="selectedItems.includes('giubbotto')" fxLayoutGap="0px">
+    <mat-form-field fxFlex="100">
+        <mat-label>Quanti giubbotti vorresti?</mat-label>
+        <input matInput formControlName="giubbotto" type="number"  name="giubbotto" placeholder="Inserisci un numero" required>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" *ngIf="selectedItems.includes('vino_zanutta')" fxLayoutGap="0px">
+    <mat-form-field fxFlex="100">
+        <mat-label>Quanti vino zanutta vorresti?</mat-label>
+        <input matInput formControlName="vino_zanutta" type="number"  name="vino_zanutta" placeholder="Inserisci un numero" required>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" *ngIf="selectedItems.includes('vino_magnum')" fxLayoutGap="0px">
+    <mat-form-field fxFlex="100">
+        <mat-label>Quanti vini magnum vorresti?</mat-label>
+        <input matInput formControlName="vino_magnum" type="number"  name="vino_magnum" placeholder="Inserisci un numero" required >
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" *ngIf="selectedItems.includes('branzino')" fxLayoutGap="0px">
+    <mat-form-field fxFlex="100">
+        <mat-label>Quanti branzino vorresti?</mat-label>
+        <input matInput formControlName="branzino" type="number"  name="branzino" placeholder="Inserisci un numero" required >
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" *ngIf="selectedItems.includes('altro')" fxLayoutGap="0px">
+    <mat-form-field fxFlex="100">
+      <mat-label>Altro</mat-label>
+      <textarea name="altro" matInput formControlName="altro" #message rows="5" maxlength="2500"
+        placeholder="I miei altri regali sono..." required></textarea>
+      <mat-hint align="start"><strong>Descrivi altri regali.</strong> </mat-hint>
+      <mat-hint align="end">{{message.value.length}} / 2500</mat-hint>
+    </mat-form-field>
+  </div>
+</div>
